@@ -1,15 +1,15 @@
-from __future__ import absolute_import, division, print_function
-
-__version__ = "0.1.0"
-
 # -*- mode: python; coding: utf-8 -*
 # Copyright (c) 2019 Radio Astronomy Software Group
 # Licensed under the 2-clause BSD License
-import os
-import sys
-import subprocess
-import json
+from __future__ import absolute_import, division, print_function
+
 import importlib
+import json
+import os
+import subprocess
+import sys
+
+__version__ = "0.1.0"
 
 
 def get_py_major_version():
