@@ -7,17 +7,12 @@ Overview
 .. list-table::
     :stub-columns: 1
 
-    * - docs
-      - |docs|
     * - tests
       - | |travis|
         | |coveralls|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
-.. |docs| image:: https://readthedocs.org/projects/pygitversion/badge/?style=flat
-    :target: https://readthedocs.org/projects/pygitversion
-    :alt: Documentation Status
 
 .. |travis| image:: https://api.travis-ci.org/RadioAstronomySoftwareGroup/pygitversion.svg?branch=master
     :alt: Travis-CI Build Status
@@ -50,9 +45,8 @@ Overview
 
 .. end-badges
 
-Robustly generate exact git hashes for python packages
+**Robustly generate exact git hashes for python packages**
 
-* Free software: MIT license
 
 Installation
 ============
