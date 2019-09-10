@@ -64,7 +64,7 @@ Installation
 Quick Usage
 ===========
 The point of pygitversion is to enable you to robustly create your package with exact
-git version information, rather than _just_ a simple version specifier.
+git version information, rather than *just* a simple version specifier.
 
 It does *not replace* the semantic version specifier of your package, but rather
 complements it. pygitversion provides the tools necessary to _always_ have git
@@ -74,38 +74,40 @@ not).
 To use in your package, follow these steps:
 
 1. If `pyproject.toml` does not exist in your package, create it.
-2. Add the key `[build-system]` to `pyproject.toml`, and add `requires = ['pygitversion']`
+2. Add the key ``[build-system]`` to ``pyproject.toml``, and add ``requires = ['pygitversion']``
    to the key.
-3. Ensure that `__init__.py` contains the correct semantic `__version__` specifier.
-4. In `setup.py`, add the following:
+3. Ensure that ``__init__.py`` contains the correct semantic ``__version__`` specifier.
+4. In `setup.py`, add the following::
 
     import pygitversion
     pygitversion.write_git_info_file(__name__)
-5. Ensure the package has a `MANIFEST.in`, and that it includes `<package>/GIT_INFO`.
-6. The git version of the module may then be accessed by doing:
+
+5. Ensure the package has a ``MANIFEST.in``, and that it includes ``<package>/GIT_INFO``.
+6. The git version of the module may then be accessed by doing::
 
     import pygitversion
     pygitversion.construct_version_info(<package_name>)
-7. It is recommended (but not necessary) that `__init__.py` contain:
+
+7. It is recommended (but not necessary) that ``__init__.py`` contain::
 
     import pygitversion
     GIT_VERSION = pygitversion.construct_version_info(__name__)
 
 Cases Addressed
 ---------------
-There are various ways a package can be installed, and `pygitversion` attempts to ensure
+There are various ways a package can be installed, and ``pygitversion`` attempts to ensure
 that in each case, the git version is available. The following assumes the above
 steps have been followed in your package.
 
-1. Package cloned and installed via `pip install .`: a `GIT_INFO` file is created and
-   installed due to `MANIFEST.in`. That `GIT_INFO` file is found whenever the package
+1. Package cloned and installed via ``pip install .``: a ``GIT_INFO`` file is created and
+   installed due to ``MANIFEST.in``. That ``GIT_INFO`` file is found whenever the package
    is loaded.
-2. Package cloned and installed via `pip install -e .`: a `GIT_INFO` file is created
+2. Package cloned and installed via ``pip install -e .``: a ``GIT_INFO`` file is created
    in the repo, and sym-linked when the package is imported.
-3. Package installed directly from hosted source control via `pip install git+git:...`:
+3. Package installed directly from hosted source control via ``pip install git+git:...``:
    Unsure?
-4. Package installed from PyPI (`pip install <package>`): the process of building the
-   sdist and bdist to upload to PyPI inherently bundles the most current `GIT_INFO`
+4. Package installed from PyPI (``pip install <package>``): the process of building the
+   sdist and bdist to upload to PyPI inherently bundles the most current ``GIT_INFO``
    file as part of the build, and this is installed with the package.
 
 Documentation
@@ -122,19 +124,3 @@ To run the all tests run::
 
     tox
 
-Note, to combine the coverage data from all the tox environments run:
-
-.. list-table::
-    :widths: 10 90
-    :stub-columns: 1
-
-    - - Windows
-      - ::
-
-            set PYTEST_ADDOPTS=--cov-append
-            tox
-
-    - - Other
-      - ::
-
-            PYTEST_ADDOPTS=--cov-append tox
