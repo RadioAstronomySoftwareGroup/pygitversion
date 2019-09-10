@@ -60,13 +60,13 @@ The point of pygitversion is to enable you to robustly create your package with 
 git version information, rather than *just* a simple version specifier.
 
 It does *not replace* the semantic version specifier of your package, but rather
-complements it. pygitversion provides the tools necessary to _always_ have git
+complements it. pygitversion provides the tools necessary to *always* have git
 information available in a Python package (whether the actual repo is available or
 not).
 
 To use in your package, follow these steps:
 
-1. If `pyproject.toml` does not exist in your package, create it.
+1. If ``pyproject.toml`` does not exist in your package, create it.
 2. Add the key ``[build-system]`` to ``pyproject.toml``, and add ``requires = ['pygitversion']``
    to the key.
 3. Ensure that ``__init__.py`` contains the correct semantic ``__version__`` specifier.
