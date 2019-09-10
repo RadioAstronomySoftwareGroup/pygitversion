@@ -1,6 +1,8 @@
-========
-Overview
-========
+============
+pygitversion
+============
+
+**Robustly generate exact git hashes for python packages**
 
 .. start-badges
 
@@ -45,9 +47,6 @@ Overview
 
 .. end-badges
 
-**Robustly generate exact git hashes for python packages**
-
-
 Installation
 ============
 
@@ -55,8 +54,8 @@ Installation
 
     pip install pygitversion
 
-Quick Usage
-===========
+Usage
+=====
 The point of pygitversion is to enable you to robustly create your package with exact
 git version information, rather than *just* a simple version specifier.
 
@@ -103,12 +102,6 @@ steps have been followed in your package.
 4. Package installed from PyPI (``pip install <package>``): the process of building the
    sdist and bdist to upload to PyPI inherently bundles the most current ``GIT_INFO``
    file as part of the build, and this is installed with the package.
-
-Documentation
-=============
-
-
-https://pygitversion.readthedocs.io/
 
 
 Development
