@@ -19,7 +19,8 @@ def read(*names, **kwargs):
 
 setup(
     name="pygitversion",
-    version="0.1.0",
+    use_scm_version=True,
+    setup_requires=["setuptools_scm"],
     license="MIT",
     description="Robustly generate exact git hashes for python packages",
     long_description="%s\n%s"
@@ -69,6 +70,5 @@ setup(
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
     ],
-    extras_require={"dev": ["pre-commit", "tox", "pytest", "black"]},
-    setup_requires=[],
+    extras_require={"dev": ["pre-commit", "tox", "pytest", "black", "twine"]},
 )
