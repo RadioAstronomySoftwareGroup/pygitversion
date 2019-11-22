@@ -168,6 +168,12 @@ def write_git_info_file(package):
         version["git_hash"],
         version["git_description"],
         version["git_branch"],
+        dir,
     ]
+    print(version, dir, data)
+
+    with open("/home/steven/Documents/GIT_INFO", "w") as outfile:
+        json.dump(data, outfile)
+
     with open(os.path.join(dir, "GIT_INFO"), "w") as outfile:
         json.dump(data, outfile)

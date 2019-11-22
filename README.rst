@@ -67,13 +67,13 @@ not).
 To use in your package, follow these steps:
 
 1. If ``pyproject.toml`` does not exist in your package, create it.
-2. Add the key ``[build-system]`` to ``pyproject.toml``, and add ``requires = ['pygitversion']``
+2. Add the key ``[build-system]`` to ``pyproject.toml``, and add ``requires = ['pygitversion','setuptools>40.8.0','wheel']``
    to the key.
 3. Ensure that ``__init__.py`` contains the correct semantic ``__version__`` specifier.
 4. In `setup.py`, add the following::
 
     import pygitversion
-    pygitversion.write_git_info_file(__name__)
+    pygitversion.write_git_info_file(<your_installed_package_name>)
 
 5. Ensure the package has a ``MANIFEST.in``, and that it includes ``<package>/GIT_INFO``.
 6. The git version of the module may then be accessed by doing::
