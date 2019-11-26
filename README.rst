@@ -6,44 +6,13 @@ pygitversion
 
 .. start-badges
 
-.. list-table::
-    :stub-columns: 1
-
-    * - tests
-      - | |travis|
-        | |coveralls|
-    * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
-
-.. |travis| image:: https://api.travis-ci.org/RadioAstronomySoftwareGroup/pygitversion.svg?branch=master
+.. image:: https://api.travis-ci.org/RadioAstronomySoftwareGroup/pygitversion.svg?branch=master
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/RadioAstronomySoftwareGroup/pygitversion
 
-.. |coveralls| image:: https://coveralls.io/repos/RadioAstronomySoftwareGroup/pygitversion/badge.svg?branch=master&service=github
+.. image:: https://coveralls.io/repos/RadioAstronomySoftwareGroup/pygitversion/badge.svg?branch=master&service=github
     :alt: Coverage Status
     :target: https://coveralls.io/r/RadioAstronomySoftwareGroup/pygitversion
-
-.. |version| image:: https://img.shields.io/pypi/v/pygitversion.svg
-    :alt: PyPI Package latest release
-    :target: https://pypi.org/project/pygitversion
-
-.. |commits-since| image:: https://img.shields.io/github/commits-since/RadioAstronomySoftwareGroup/pygitversion/v0.1.0.svg
-    :alt: Commits since latest release
-    :target: https://github.com/RadioAstronomySoftwareGroup/pygitversion/compare/v0.1.0...master
-
-.. |wheel| image:: https://img.shields.io/pypi/wheel/pygitversion.svg
-    :alt: PyPI Wheel
-    :target: https://pypi.org/project/pygitversion
-
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/pygitversion.svg
-    :alt: Supported versions
-    :target: https://pypi.org/project/pygitversion
-
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/pygitversion.svg
-    :alt: Supported implementations
-    :target: https://pypi.org/project/pygitversion
-
 
 .. end-badges
 
