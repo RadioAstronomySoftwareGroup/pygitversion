@@ -66,16 +66,16 @@ def _get_git_output(args, dir, capture_stderr=False):
 
 def _get_package_dir(package):
     """Return the package directory"""
-    if type(package) is str:
-        return os.path.dirname(package)
-    else:
-        try:
-            dir = os.path.dirname(os.path.realpath(getattr(package, "__file__")))
-        except AttributeError:
-            raise ValueError(
-                "'package' must be a string name to a package, or an actual package"
-            )
-        return dir
+    try:
+        dir = getattr(sys.modules[package], "__file__")
+        dir = os.path.dirname(dir)
+    except KeyError:
+        dir = os.path.dirname(package)
+
+    if not os.path.exists(dir):
+        raise ValueError("Package path does not exist!")
+
+    return dir
 
 
 def _get_gitinfo_file(git_file=None, package=None):
@@ -136,17 +136,13 @@ def construct_version_info(package):
         dictionary giving full version information
     """
     try:
-        version = package.__version__
-        package_path = package.__file__
-    except AttributeError:
-        try:
-            # Assume its a module that's in the namespace.
-            version = sys.modules[package].__version__
-            package_path = sys.modules[package].__file__
-        except KeyError:
-            # package is a *path* to a package.
-            package_path = os.path.join(package, "__init__.py")
-            version = find_version(package_path)
+        # Assume its a module that's in the namespace.
+        version = sys.modules[package].__version__
+        package_path = sys.modules[package].__file__
+    except KeyError:
+        # package is a *path* to a package.
+        package_path = os.path.join(package, "__init__.py")
+        version = find_version(package_path)
 
     version_info = {
         "version": version,
@@ -167,7 +163,7 @@ def construct_version_info(package):
         # The package is not in a git repo -- it must be installed.
         try:
             # Check if a GIT_INFO file was created when installing package
-            version_info.update(_get_gitinfo_file(package=package))
+            version_info.update(_get_gitinfo_file(package=package_path))
         except (IOError, OSError):
             pass
 

@@ -67,28 +67,30 @@ not).
 To use in your package, follow these steps:
 
 1. If ``pyproject.toml`` does not exist in your package, create it.
-2. Add the key ``[build-system]`` to ``pyproject.toml``, and add ``requires = ['pygitversion','setuptools>40.8.0','wheel']``
-   to the key.
-3. Ensure that ``__init__.py`` contains the correct semantic ``__version__`` specifier.
+2. Add the key ``[build-system]`` to ``pyproject.toml``, and add
+   ``requires = ['pygitversion>=0.1.6','setuptools>40.8.0','wheel']`` to the key.
+3. Ensure that ``__init__.py`` contains the correct semantic ``__version__`` specifier
+   (eg. `__version__ = 0.1.0`).
 4. In `setup.py`, add the following::
 
+       import pygitversion
+       pygitversion.write_git_info_file(__file__, <rel_path_to_package>)
+
+5. Ensure the package has a ``MANIFEST.in``, and that it includes at least::
+
+       include <package>/GIT_INFO
+
+6. The git version of the module may then be accessed inside your package by doing::
+
     import pygitversion
-    pygitversion.write_git_info_file(<your_installed_package_name>, __file__)
-
-    Note that if your package resides in a ``src/`` folder, you'll have to use::
-
-    pygitversion.write_git_info_file(<your_installed_package_name>, __file__, "src")
-
-5. Ensure the package has a ``MANIFEST.in``, and that it includes ``<package>/GIT_INFO``.
-6. The git version of the module may then be accessed by doing::
-
-    import pygitversion
-    pygitversion.construct_version_info(<package_name>)
+    pygitversion.construct_version_info(my_package_name)
 
 7. It is recommended (but not necessary) that ``__init__.py`` contain::
 
     import pygitversion
     GIT_VERSION = pygitversion.construct_version_info(__name__)
+
+8. It is also recommended to add ``GIT_INFO`` to your ``.gitignore``.
 
 Cases Addressed
 ---------------
@@ -98,14 +100,18 @@ steps have been followed in your package.
 
 1. Package cloned and installed via ``pip install .``: a ``GIT_INFO`` file is created and
    installed due to ``MANIFEST.in``. That ``GIT_INFO`` file is found whenever the package
-   is loaded.
-2. Package cloned and installed via ``pip install -e .``: a ``GIT_INFO`` file is created
-   in the repo, and sym-linked when the package is imported.
+   is loaded. **This will break iff the installed files on your PYTHONPATH are directly
+   modified, which should never be the case.**
+2. Package cloned and installed via ``pip install -e .``: the module that is imported
+   refers to the actual git repo (via symlink), and the git info is created at import
+   time directly from the repo. This still works if the code is updated in place.
 3. Package installed directly from hosted source control via ``pip install git+git:...``:
-   Unsure?
+   When pip installs the package, it first fully clones the repo, which means the GIT_INFO
+   file is built and added to the install, just as in point 1.
 4. Package installed from PyPI (``pip install <package>``): the process of building the
-   sdist and bdist to upload to PyPI inherently bundles the most current ``GIT_INFO``
-   file as part of the build, and this is installed with the package.
+   sdist and bdist to upload to PyPI inherently re-builds and bundles the ``GIT_INFO``
+   file as part of the build, and this is installed with the package. Developers should
+   be careful to build/upload only clean repositories.
 
 
 Development

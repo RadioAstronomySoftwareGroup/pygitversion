@@ -12,23 +12,20 @@ import json
 import pygitversion as pgv
 
 
-def test_get_package():
-    _pgv = pgv._get_package("pygitversion")
-    assert _pgv is pgv
-
-    _pgv = pgv._get_package(pgv)
-    assert _pgv is pgv
-
-
 def test_get_package_dir():
     dir = pgv._get_package_dir("pygitversion")
+    print(dir)
     assert dir.endswith("pygitversion")
+
+    dir = pgv._get_package_dir(__file__)
+    print(dir)
+    assert dir.endswith("tests")
 
 
 def test_get_gitinfo_file(tmpdir):
     # write a file to read in
     git_file = tmpdir.mkdir("sub").join("GIT_INFO")
-    version_info = pgv.construct_version_info(pgv)
+    version_info = pgv.construct_version_info("pygitversion")
     data = [
         version_info["git_origin"],
         version_info["git_origin"],
