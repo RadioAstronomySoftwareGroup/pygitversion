@@ -73,7 +73,11 @@ To use in your package, follow these steps:
 4. In `setup.py`, add the following::
 
     import pygitversion
-    pygitversion.write_git_info_file(<your_installed_package_name>)
+    pygitversion.write_git_info_file(<your_installed_package_name>, __file__)
+
+    Note that if your package resides in a ``src/`` folder, you'll have to use::
+
+    pygitversion.write_git_info_file(<your_installed_package_name>, __file__, "src")
 
 5. Ensure the package has a ``MANIFEST.in``, and that it includes ``<package>/GIT_INFO``.
 6. The git version of the module may then be accessed by doing::
