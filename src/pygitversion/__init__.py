@@ -205,6 +205,9 @@ def write_git_info_file(project_path, package_path):
     pth : str, optional
         Any extra sub-directories between setup.py and the actual python package (eg src)
     """
+    if not os.path.isdir(project_path):
+        project_path = os.path.dirname(project_path)
+
     if not os.path.isabs(package_path):
         package_path = os.path.join(project_path, package_path)
 
@@ -216,7 +219,6 @@ def write_git_info_file(project_path, package_path):
         version["git_description"],
         version["git_branch"],
     ]
-    print(version, package_path)
 
     # Write GIT_INFO to the *package* path (not the project path).
     with open(os.path.join(package_path, "GIT_INFO"), "w") as outfile:
