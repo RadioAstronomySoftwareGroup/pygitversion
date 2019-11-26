@@ -145,9 +145,8 @@ def construct_version_info(package):
             package_path = sys.modules[package].__file__
         except KeyError:
             # package is a *path* to a package.
-            init = os.path.join(package, "__init__.py")
-            version = find_version(init)
             package_path = os.path.join(package, "__init__.py")
+            version = find_version(package_path)
 
     version_info = {
         "version": version,
@@ -205,6 +204,9 @@ def write_git_info_file(project_path, package_path):
     pth : str, optional
         Any extra sub-directories between setup.py and the actual python package (eg src)
     """
+    if not os.path.isabs(project_path):
+        project_path = os.path.abspath(project_path)
+
     if not os.path.isdir(project_path):
         project_path = os.path.dirname(project_path)
 
