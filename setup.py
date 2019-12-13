@@ -22,7 +22,7 @@ setup(
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     license="MIT",
-    description="Robustly generate exact git hashes for python packages",
+    description="A set of plugins for setuptools_scm to enable better version tracking",
     long_description="%s\n%s"
     % (
         re.compile("^.. start-badges.*^.. end-badges", re.M | re.S).sub(
@@ -33,8 +33,8 @@ setup(
     author="Radio Astronomy Software Group",
     author_email="steven.g.murray@asu.edu",
     url="https://github.com/RadioAstronomySoftwareGroup/pygitversion",
-    packages=find_packages("src"),
-    package_dir={"": "src"},
+    packages=find_packages(),
+    # package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
     include_package_data=True,
     zip_safe=False,
@@ -51,7 +51,6 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: Implementation :: CPython",
-        "Programming Language :: Python :: Implementation :: PyPy",
         # uncomment if you test on these interpreters:
         # 'Programming Language :: Python :: Implementation :: IronPython',
         # 'Programming Language :: Python :: Implementation :: Jython',
