@@ -5,10 +5,10 @@
 """Tests for version.py.
 
 """
+from pygitversion import branch_scheme
 from setuptools_scm.config import Configuration
 from setuptools_scm.version import format_version, meta
 
-from pygitversion import branch_scheme
 
 c = Configuration()
 
