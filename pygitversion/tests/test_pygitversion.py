@@ -6,7 +6,7 @@
 
 """
 from setuptools_scm.config import Configuration
-from setuptools_scm.version import meta, format_version
+from setuptools_scm.version import format_version, meta
 
 from pygitversion import branch_scheme
 
