@@ -24,7 +24,7 @@ matrix:
 #        - TOXENV=py37
     - python: '3.7'
       env:
-        - TOXENV=py37,coveralls
+        - TOXENV=py37
 
 
 before_install:

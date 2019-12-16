@@ -10,9 +10,9 @@ pygitversion
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/RadioAstronomySoftwareGroup/pygitversion
 
-.. image:: https://coveralls.io/repos/RadioAstronomySoftwareGroup/pygitversion/badge.svg?branch=master&service=github
-    :alt: Coverage Status
-    :target: https://coveralls.io/r/RadioAstronomySoftwareGroup/pygitversion
+.. image:: https://codecov.io/gh/RadioAstronomySoftwareGroup/pygitversion/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/RadioAstronomySoftwareGroup/pygitversion
+
 
 .. end-badges
 
