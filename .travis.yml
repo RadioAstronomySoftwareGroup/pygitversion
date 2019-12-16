@@ -24,7 +24,7 @@ matrix:
 #        - TOXENV=py37
     - python: '3.7'
       env:
-        - TOXENV=py37,coveralls
+        - TOXENV=py37
 
 
 before_install:
@@ -32,7 +32,7 @@ before_install:
   - uname -a
   - lsb_release -a || true
 install:
-  - python -mpip install --progress-bar=off tox -rci/requirements.txt
+  - python -mpip install --progress-bar=off tox codecov -rci/requirements.txt
   - virtualenv --version
   - easy_install --version
   - pip --version
@@ -42,3 +42,5 @@ script:
 after_failure:
   - more .tox/log/* | cat
   - more .tox/*/log/* | cat
+after_success:
+    - codecov
