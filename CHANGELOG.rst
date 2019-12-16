@@ -2,7 +2,7 @@
 Changelog
 =========
 
-unreleased
+1.0.0
 ----------
 
 * Move to setuptools_scm
