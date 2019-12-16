@@ -1,16 +1,5 @@
-[paths]
-source =
-   src
-   */site-packages
-
 [run]
-branch = true
-source =
-    pygitversion
-    tests
-parallel = true
+omit = */tests/*
 
 [report]
-show_missing = true
-precision = 2
-omit = *migrations*
+omit = */tests/*
